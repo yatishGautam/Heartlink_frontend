@@ -17,9 +17,3 @@ This project is a web-based application designed to help couples in long-distanc
    - React Router for routing
    - Material-UI for styling
 3. Create a folder structure with components, hooks, pages, and styles.
-
-```bash
-npx create-react-app relationship-tracker
-cd relationship-tracker
-npm install recoil @material-ui/core react-router-dom
-```
