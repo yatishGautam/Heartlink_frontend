@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormInput = ({ label, type, value, onChange, placeHolder }) => {
+const FormInput = ({ label, type, value, onChange, placeholder }) => {
 	return (
 		<div>
 			<label className="block text-charcoalGray text-sm font-medium mb-1">
@@ -10,7 +10,7 @@ const FormInput = ({ label, type, value, onChange, placeHolder }) => {
 				type={type}
 				value={value}
 				onChange={onChange}
-				placeHolder={placeHolder}
+				placeholder={placeholder}
 				className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none"
 			></input>
 		</div>
