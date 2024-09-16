@@ -23,8 +23,8 @@ const SignupForm = () => {
 	};
 
 	return (
-		<div className="w-screen item-center grid grid-cols-10 place-items-center">
-			<div className="bg-white p-8 rounded-lg shadow-lg col-span-10">
+		<div className="min-h-screen w-screen  grid  place-items-center">
+			<div className="bg-white p-8 rounded-lg shadow-lg  w-full  max-w-lg">
 				<h1 className="text-2xl font-bold mb-6 text-center ">Sign Up</h1>
 				<form onSubmit={handleSubmit}>
 					<FormInput
