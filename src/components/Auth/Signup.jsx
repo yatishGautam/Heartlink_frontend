@@ -18,38 +18,40 @@ const SignupForm = () => {
 	};
 
 	const handleSubmit = (e) => {
-		e.preventDefaullt();
+		e.preventDefault();
 		console.log("form data", formData);
 	};
 
 	return (
-		<div className="min-h-screen  flex items-center justify-center bg-gray-100">
-			<div className="bg-white p-8 rounded-lg">
-				<h1>
-					<form onSubmit={handleSubmit}>
-						<FormInput
-							type="text"
-							placeholder="Enter your username"
-							onChange={handleChangeInValue}
-						/>
-						<br />
-						<FormInput
-							type="text"
-							placeholder="Enter your name"
-							onChange={handleChangeInValue}
-						/>
-						<br />
-						<FormInput
-							type="password"
-							placeholder="Enter your password"
-							onChange={handleChangeInValue}
-						/>
-						<br />
-						<SubmitButton type="subit" text="Sign up">
-							Sign Up
-						</SubmitButton>
-					</form>
-				</h1>
+		<div className="w-screen item-center grid grid-cols-10 place-items-center">
+			<div className="bg-white p-8 rounded-lg shadow-lg col-span-10">
+				<h1 className="text-2xl font-bold mb-6 text-center ">Sign Up</h1>
+				<form onSubmit={handleSubmit}>
+					<FormInput
+						type="text"
+						label="Username"
+						placeholder="Enter your username"
+						onChange={handleChangeInValue}
+					/>
+					<br />
+					<FormInput
+						type="text"
+						label="Name"
+						placeholder="Enter your name"
+						onChange={handleChangeInValue}
+					/>
+					<br />
+					<FormInput
+						type="password"
+						label="Password"
+						placeholder="Enter your password"
+						onChange={handleChangeInValue}
+					/>
+					<br />
+					<SubmitButton type="subit" text="Sign up">
+						Sign Up
+					</SubmitButton>
+				</form>
 			</div>
 		</div>
 	);
