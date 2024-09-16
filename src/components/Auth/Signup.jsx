@@ -29,14 +29,16 @@ const SignupForm = () => {
 				<form onSubmit={handleSubmit}>
 					<FormInput
 						type="text"
-						label="Username"
-						placeholder="Enter your username"
+						label="Email"
+						name="email"
+						placeholder="Enter your email"
 						onChange={handleChangeInValue}
 					/>
 					<br />
 					<FormInput
 						type="text"
 						label="Name"
+						name="name"
 						placeholder="Enter your name"
 						onChange={handleChangeInValue}
 					/>
@@ -44,6 +46,7 @@ const SignupForm = () => {
 					<FormInput
 						type="password"
 						label="Password"
+						name="password"
 						placeholder="Enter your password"
 						onChange={handleChangeInValue}
 					/>
