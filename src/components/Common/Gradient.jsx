@@ -3,7 +3,7 @@ import React from "react";
 const GradientBackground = ({ colors }) => {
 	// Create a CSS gradient string from the array of colors
 	const gradientStyle = {
-		background: `linear-gradient(135deg, ${colors.join(", ")})`,
+		background: `linear-gradient(125deg, ${colors.join(", ")})`,
 		height: "100vh", // Full height of the viewport
 		width: "100%", // Full width of the viewport
 	};

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import FormInput from "../Common/FormInput";
 import SubmitButton from "../Common/SubmitButton";
-import { login, setAuthToken } from "../../services/authService";
+import { getAuthToken, login, setAuthToken } from "../../services/authService";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -24,9 +26,14 @@ const LoginForm = () => {
 			const data = await login(formData);
 			console.log(data);
 			setAuthToken(data.token);
+			console.log("saved token is: ", getAuthToken());
 		} catch (error) {
 			console.log("error while logging in ", error);
 		}
+	};
+
+	const onClickToSignup = () => {
+		navigate("/signup");
 	};
 
 	return (
@@ -51,6 +58,16 @@ const LoginForm = () => {
 					></FormInput>
 					<br />
 					<SubmitButton type="submit" text="Login" />
+					<br />
+					<p className="text-sm text-gray-500">
+						In case you don't have an account,{" "}
+						<button
+							onClick={onClickToSignup}
+							className="text-blue-500 underline hover:text-blue-700 focus:outline-none"
+						>
+							click here
+						</button>
+					</p>
 				</form>
 			</div>
 		</div>

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import FormInput from "../Common/FormInput";
 import SubmitButton from "../Common/SubmitButton";
 import { signup } from "../../services/userService";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -29,6 +31,10 @@ const SignupForm = () => {
 		}));
 	};
 
+	const onClickToLogin = () => {
+		navigate("/login");
+	};
+
 	// Validate form inputs and set corresponding error messages
 	const inputValidation = () => {
 		const newErrors = {};
@@ -48,6 +54,9 @@ const SignupForm = () => {
 			console.log("form data", formData);
 			try {
 				const data = await signup(formData);
+				if (data) {
+					navigate("/login");
+				}
 			} catch (error) {}
 		}
 	};
@@ -87,6 +96,15 @@ const SignupForm = () => {
 					<SubmitButton type="subit" text="Sign up">
 						Sign Up
 					</SubmitButton>
+					<p className="text-sm text-gray-500">
+						In case you already have an account,{" "}
+						<button
+							onClick={onClickToLogin}
+							className="text-blue-500 underline hover:text-blue-700 focus:outline-none"
+						>
+							click here
+						</button>
+					</p>
 				</form>
 			</div>
 		</div>
