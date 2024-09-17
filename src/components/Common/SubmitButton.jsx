@@ -10,7 +10,7 @@ const SubmitButton = ({
 		<button
 			type={type}
 			onClick={onClick}
-			className={`${color} text-charcoalGray rounded-lg font-bold shadow-md hover:bg-opacity-90`}
+			className={`${color} w-full p-2 text-charcoalGray rounded-lg font-bold shadow-md hover:bg-opacity-90`}
 		>
 			{text}
 		</button>
