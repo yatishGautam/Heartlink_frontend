@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import FormInput from "../Common/FormInput";
 import SubmitButton from "../Common/SubmitButton";
+import { signup } from "../../services/userService";
 
 const SignupForm = () => {
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
 		name: "",
+	});
+	const [success, setSuccess] = useState(null);
+	const [error, setError] = useState({
+		email: null,
+		name: null,
+		password: null,
 	});
 
 	const handleChangeInValue = (e) => {
@@ -15,11 +22,34 @@ const SignupForm = () => {
 			...prev,
 			[name]: value,
 		}));
+		// Clear error for the field as soon as the user starts typing
+		setError((prev) => ({
+			...prev,
+			[name]: null,
+		}));
 	};
 
-	const handleSubmit = (e) => {
+	// Validate form inputs and set corresponding error messages
+	const inputValidation = () => {
+		const newErrors = {};
+
+		if (!name) newErrors.name = "User needs to have a name";
+		if (!email) newErrors.email = "User needs to have an email";
+		if (!password) newErrors.password = "User needs to have a password";
+
+		setError(newErrors);
+
+		return Object.keys(newErrors).length === 0; // Return true if no errors
+	};
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("form data", formData);
+		if (inputValidation) {
+			console.log("form data", formData);
+			try {
+				const data = await signup(formData);
+			} catch (error) {}
+		}
 	};
 
 	return (
@@ -33,6 +63,7 @@ const SignupForm = () => {
 						name="email"
 						placeholder="Enter your email"
 						onChange={handleChangeInValue}
+						error={error.email}
 					/>
 					<br />
 					<FormInput
@@ -41,6 +72,7 @@ const SignupForm = () => {
 						name="name"
 						placeholder="Enter your name"
 						onChange={handleChangeInValue}
+						error={error.name}
 					/>
 					<br />
 					<FormInput
@@ -49,6 +81,7 @@ const SignupForm = () => {
 						name="password"
 						placeholder="Enter your password"
 						onChange={handleChangeInValue}
+						error={error.password}
 					/>
 					<br />
 					<SubmitButton type="subit" text="Sign up">

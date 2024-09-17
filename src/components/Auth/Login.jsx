@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FormInput from "../Common/FormInput";
 import SubmitButton from "../Common/SubmitButton";
+import { login, setAuthToken } from "../../services/authService";
 
 const LoginForm = () => {
 	const [formData, setFormData] = useState({
@@ -16,9 +17,16 @@ const LoginForm = () => {
 		}));
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log(formData);
+		try {
+			const data = await login(formData);
+			console.log(data);
+			setAuthToken(data.token);
+		} catch (error) {
+			console.log("error while logging in ", error);
+		}
 	};
 
 	return (
