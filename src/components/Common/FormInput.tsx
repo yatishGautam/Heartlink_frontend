@@ -1,6 +1,16 @@
 import React from "react";
 
-const FormInput = ({
+type FormInputProps = {
+	label: string;
+	type: string;
+	value: string;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	placeholder?: string;
+	name: string;
+	error?: string;
+};
+
+const FormInput: React.FC<FormInputProps> = ({
 	label,
 	type,
 	value,

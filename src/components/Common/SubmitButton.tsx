@@ -1,6 +1,13 @@
 import React from "react";
 
-const SubmitButton = ({
+type SubmitButtonProps = {
+	text: string;
+	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => {};
+	type?: "button" | "submit" | "reset";
+	color?: string;
+};
+
+const SubmitButton: React.FC<SubmitButtonProps> = ({
 	text,
 	onClick,
 	type = "button",

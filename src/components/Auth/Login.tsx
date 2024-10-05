@@ -4,14 +4,19 @@ import SubmitButton from "../Common/SubmitButton";
 import { getAuthToken, login, setAuthToken } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
+type LoginFormData = {
+	email: string;
+	password: string;
+};
+
+const LoginForm: React.FC = () => {
 	const navigate = useNavigate();
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<LoginFormData>({
 		email: "",
 		password: "",
 	});
 
-	const onChange = (e) => {
+	const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { value, name } = e.target;
 		setFormData((prev) => ({
 			...prev,
@@ -19,9 +24,8 @@ const LoginForm = () => {
 		}));
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
 		e.preventDefault();
-		console.log(formData);
 		try {
 			const data = await login(formData);
 			console.log(data);
@@ -46,6 +50,7 @@ const LoginForm = () => {
 						name="email"
 						label="Email"
 						placeholder="Enter your e-mail"
+						value={formData.email}
 						onChange={onChange}
 					></FormInput>
 					<br />
@@ -54,6 +59,7 @@ const LoginForm = () => {
 						name="password"
 						label="Password"
 						placeholder="enter your password"
+						value={formData.password}
 						onChange={onChange}
 					></FormInput>
 					<br />

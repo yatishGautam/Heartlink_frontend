@@ -1,6 +1,10 @@
 import React from "react";
 
-const GradientBackground = ({ colors }) => {
+type GradientBackgroundTypes = {
+	colors: string[];
+};
+
+const GradientBackground: React.FC<GradientBackgroundTypes> = ({ colors }) => {
 	// Create a CSS gradient string from the array of colors
 	const gradientStyle = {
 		background: `linear-gradient(125deg, ${colors.join(", ")})`,

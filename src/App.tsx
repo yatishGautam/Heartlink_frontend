@@ -6,8 +6,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignupForm from "./components/Auth/Signup";
 
 function App() {
-	const [count, setCount] = useState(0);
-
 	return (
 		<BrowserRouter>
 			<Routes>
